@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sibylhaus - Intuitive tarot readings by Shea. Direct, grounded, fast. Book your reading today.">
+    <meta name="keywords" content="tarot reading, intuitive reading, tarot, oracle cards, Harrison AR">
+    <title>Sibylhaus | Intuitive Tarot Readings</title>
+    <style>
+        :root {
+            --color-black: #000000;
+            --color-white: #FFFFFF;
+            --color-brown: #8B7355;
+            --color-gold: #D4AF37;
+            --color-navy: #2C3E50;
+            --color-gray-light: #F5F5F5;
+            --color-gray-medium: #E0E0E0;
+            --color-gray-dark: #333333;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 48px;
+            --spacing-xl: 72px;
+            --spacing-xxl: 96px;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--color-black);
+            background-color: var(--color-white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 72px);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(24px, 3vw, 32px);
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            border-color: var(--color-black);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-gray-dark);
+            border-color: var(--color-gray-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-white);
+            color: var(--color-black);
+            border-color: var(--color-black);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-gray-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gray-light) 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-tagline {
+            font-size: clamp(20px, 3vw, 28px);
+            color: var(--color-gray-dark);
+            margin-bottom: var(--spacing-xs);
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--color-brown);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-white);
+        }
+
+        .about-content {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+
+        .about h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-gray-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: var(--spacing-md);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .stars {
+            color: var(--color-gold);
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        .location {
+            color: var(--color-brown);
+            font-size: 16px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-gray-light);
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .service-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-gray-medium);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+            gap: var(--spacing-sm);
+        }
+
+        .service-name {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .tier-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .tier-mini {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .tier-core {
+            background-color: #E3F2FD;
+            color: #1565C0;
+        }
+
+        .tier-deluxe {
+            background-color: #FFF3E0;
+            color: #E65100;
+        }
+
+        .service-meta {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            font-size: 14px;
+            color: var(--color-gray-dark);
+        }
+
+        .turnaround {
+            font-weight: 600;
+            color: var(--color-brown);
+        }
+
+        .format {
+            color: var(--color-navy);
+        }
+
+        .service-description {
+            color: var(--color-gray-dark);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-white);
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .step {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step p {
+            color: var(--color-gray-dark);
+            font-size: 16px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-navy);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta-subheadline {
+            font-size: 20px;
+            margin-bottom: var(--spacing-lg);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta .btn-primary {
+            background-color: var(--color-white);
+            color: var(--color-navy);
+            border-color: var(--color-white);
+        }
+
+        .cta .btn-primary:hover {
+            background-color: var(--color-gray-light);
+            border-color: var(--color-gray-light);
+        }
+
+        .cta .btn-secondary {
+            background-color: transparent;
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+
+        .cta .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .footer-brand {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-links span {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 80vh;
+                padding: var(--spacing-lg) 0;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .footer-links span {
+                display: none;
+            }
+        }
+
+        /* Accessibility */
+        .btn:focus,
+        a:focus {
+            outline: 2px solid var(--color-gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sibylhaus</h1>
+                <p class="hero-tagline">Intuitive readings, no pretense.</p>
+                <p class="hero-subtitle">Direct. Grounded. Fast.</p>
+                <div class="btn-group">
+                    <a href="https://sibylhaus.etsy.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a Reading</a>
+                    <a href="https://instagram.com/sibylhaus.co" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container-narrow">
+            <div class="about-content">
+                <h2>Hey, I'm Shea.</h2>
+                <p>I read energy fast and don't waste words. Every reading is direct, grounded, and tuned into what actually matters. I work with tarot, intuition, and real-time vibes to bring clarity. If you're looking for something honest, fast, and insightful, you're in the right place. That's it. Let's get into it.</p>
+                <div class="about-stats">
+                    <div class="rating">
+                        <span class="stars">★★★★<span style="opacity: 0.5;">★</span></span>
+                        <span>4.5/5 stars on Etsy</span>
+                    </div>
+                    <div class="location">📍 Based in Harrison, AR</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Readings</h2>
+            <div class="services-grid">
+                <!-- Mini Tier -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">One Card Reading</div>
+                        <span class="tier-badge tier-mini">Mini</span>
+                    </div>
+                    <div class="service-meta">
+                        <span class="turnaround">⏱ Same Hour</span>
+                        <span class="format">📝 Text/Image</span>
+                    </div>
+                    <p class="service-description">Quick clarity on a single question</p>
+                </div>
+
+                <!-- Core Tier -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">Quick Tarot Reading</div>
+                        <span class="tier-badge tier-core">Core</span>
+                    </div>
+                    <div class="service-meta">
+                        <span class="turnaround">⏱ 2 Hours</span>
+                        <span class="format">🎙 Audio</span>
+                    </div>
+                    <p class="service-description">1 Question, Fast Clarity</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">72 Hour Energy Reading</div>
+                        <span class="tier-badge tier-core">Core</span>
+                    </div>
+                    <div class="service-meta">
+                        <span class="turnaround">⏱ Same Day</span>
+                        <span class="format">🎙 Audio</span>
+                    </div>
+                    <p class="service-description">Audio guidance on your energy for the next 3 days</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">Who's Coming Toward You in Love?</div>
+                        <span class="tier-badge tier-core">Core</span>
+                    </div>
+                    <div class="service-meta">
+                        <span class="turnaround">⏱ Within Hours</span>
+                        <span class="format">🎙 Audio</span>
+                    </div>
+                    <p class="service-description">Audio Tarot Reading on incoming love energy</p>
+                </div>
+
+                <!-- Deluxe Tier -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">Are You Wasting Your Time?</div>
+                        <span class="tier-badge tier-deluxe">Deluxe</span>
+                    </div>
+                    <div class="service-meta">
+                        <span class="turnaround">⏱ Same Day</span>
+                        <span class="format">🎙 Audio</span>
+                    </div>
+                    <p class="service-description">Audio Tarot Reading on whether your current path serves you</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">Energy Audit</div>
+                        <span class="tier-badge tier-deluxe">Deluxe</span>
+                    </div>
+                    <div class="service-meta">
+                        <span class="turnaround">⏱ Same Day</span>
+                        <span class="format">🎙 Audio</span>
+                    </div>
+                    <p class="service-description">What Fuels &amp; Drains You - Audio Reading</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">Next 7 Days Forecast</div>
+                        <span class="tier-badge tier-deluxe">Deluxe</span>
+                    </div>
+                    <div class="service-meta">
+                        <span class="turnaround">⏱ Same Day</span>
+                        <span class="format">🎙 Audio</span>
+                    </div>
+                    <p class="service-description">Tarot Reading With Weekly Energy Forecast</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Reading</h3>
+                    <p>Browse services and pick what resonates</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Book on Etsy</h3>
+                    <p>Quick checkout, no hassle</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Receive Your Guidance</h3>
+                    <p>Fast turnaround, honest insight</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Ready for clarity?</h2>
+            <p class="cta-subheadline">Book your reading today. No pretense, just insight.</p>
+            <div class="btn-group">
+                <a href="https://sibylhaus.etsy.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book on Etsy</a>
+                <a href="https://instagram.com/sibylhaus.co" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Follow @sibylhaus.co</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">Sibylhaus</div>
+                <div class="footer-links">
+                    <a href="https://sibylhaus.etsy.com" target="_blank" rel="noopener noreferrer">Etsy Store</a>
+                    <span>|</span>
+                    <a href="https://instagram.com/sibylhaus.co" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <span>|</span>
+                    <span style="color: rgba(255, 255, 255, 0.7);">Based in Harrison, AR</span>
+                </div>
+                <div class="footer-copyright">
+                    &copy; 2025 Sibylhaus. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links (fallback for older browsers)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') return;
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle entrance animations on scroll (optional enhancement)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Only apply if user hasn't set reduced motion preference
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.service-card, .step').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>
